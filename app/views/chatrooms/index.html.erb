@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Chatrooms</h1>
+
+<div id="chatrooms">
+  <strong>Name:</strong>
+  <% @chatrooms.each do |chatroom| %>
+    
+  <div id="<%= dom_id chatroom %>">
+    <p>
+      
+      <%= chatroom.name %>
+      <%= link_to "Show ", chatroom %>
+      <%= link_to "Edit",edit_chatroom_path(chatroom) %>
+      <%#= link_to "Destroy",destroy_chatroom_path(chatroom), data: {:confirm => 'Are you sure?', :method => :delete} %>
+      <%#= link_to "Destroy",chatroom, data: {turbo_method: :delete,turbo_confirm: "Are u sure delete?"} %>
+      <%= button_to "Destroy",chatroom, method: :delete %>
+       ||
+      <%= link_to "Join",chatroom_chatroom_users_path(chatroom), method: :post %>
+      <%= button_to "Leave",chatroom_chatroom_users_path(chatroom), method: :delete %>
+      <hr>
+    </p>
+
+  </div>    
+  <% end %>
+</div>
+
+<%= link_to "New chatroom", new_chatroom_path %>

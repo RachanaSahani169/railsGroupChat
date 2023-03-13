@@ -1,0 +1,17 @@
+<%= render @chatroom %>
+
+<div data-behavior="messages">
+  <%#= link_to "Edit", edit_chatroom_path(@chatroom) %> 
+  <%#= link_to "Back", chatrooms_path %>
+  <%#= button_to "Destroy this chatroom", @chatroom, method: :delete %>
+  <% @chatroom.messages.limit(100).each do |message| %>
+    <div><strong><%= message.user.username %>:</strong> <p> <%= message.body %> : <%= button_to "🗑️",chatroom_message_path(@chatroom,message), method: :delete  %> </p></div>
+  <% end %>
+</div>
+
+
+  <%= form_for [@chatroom, Message.new], remote: true do |f| %>
+    <%= f.text_area :body, rows: 1%>
+    <%= f.submit "Send"%>
+  <% end %>
+
