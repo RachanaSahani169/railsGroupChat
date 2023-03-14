@@ -19,7 +19,7 @@ module Chat
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    Rails.logger = Logger.new(STDOUT)
+    # Rails.logger = Logger.new(STDOUT)
     # Rails.logger = Log4r::Logger.new("Application Log")
 
   end

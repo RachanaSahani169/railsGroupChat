@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   
   resources :chatrooms do
     resource :chatroom_users
-    resources :messages
+    get '/message/:id' => 'messages#destroy', as: "destroy_message"
+    resources :messages 
+     get '/message/:id' => 'messages#destroy', as: "destroy_message"
+    
   end
   
-  delete '/chatrooms/:id' => 'chatrooms#destroy', as: "destroy_chatroom"
+  get '/chatroom/:id' => 'chatrooms#destroy', as: "destroy_chatroom"
   root "chatrooms#index" 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
