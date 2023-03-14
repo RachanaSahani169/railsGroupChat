@@ -5,7 +5,7 @@
   <%#= link_to "Back", chatrooms_path %>
   <%#= button_to "Destroy this chatroom", @chatroom, method: :delete %>
   <% @chatroom.messages.limit(100).each do |message| %>
-    <div><strong><%= message.user.username %>:</strong> <p> <%= message.body %> : <%= button_to "🗑️",chatroom_message_path(@chatroom,message), method: :delete  %> </p></div>
+    <div><strong><%= message.user.username %>:</strong> <p> <%= message.body %> : <%= link_to "🗑️",chatroom_destroy_message_path(@chatroom,message), method: :delete %> </p></div>
   <% end %>
 </div>
 
